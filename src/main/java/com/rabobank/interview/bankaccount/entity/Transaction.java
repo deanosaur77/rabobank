@@ -40,6 +40,11 @@ public class Transaction {
 	@Column
 	private Double newBalance;
 
+	
+	public Transaction() {
+		super();
+	}
+
 	public Transaction(TransactionType transactionType, Double amount, Timestamp timestamp, Double previousBalance,
 			Double newBalance) {
 		super();

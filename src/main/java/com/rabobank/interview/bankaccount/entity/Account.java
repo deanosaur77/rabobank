@@ -5,26 +5,22 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.rabobank.interview.bankaccount.enums.AccountType;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="type", discriminatorType = DiscriminatorType.STRING)
-public abstract class Account {
+@Table(name="account")
+public class Account {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,23 +36,24 @@ public abstract class Account {
 	@JoinColumn(name = "client_id")
 	private Client client;
 
-	@Column(nullable=false)
 	@Enumerated(EnumType.STRING)
-	private AccountType accountType; 
+	private AccountType accountType;
 
 	@OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
 	private List<Transaction> transactions = new ArrayList<>();
 
-	public Account(String accountNumber, Double balance, Client client, AccountType accountType) {
+	
+	public Account() {
 		super();
+	}
+
+	public Account(String accountNumber, Double balance, Client client, AccountType accountType) {
 		this.accountNumber = accountNumber;
 		this.balance = balance;
 		this.client = client;
 		this.accountType = accountType;
 	}
 
-	public abstract Transaction withdraw(double amount); 
-	
 	public Long getId() {
 		return id;
 	}

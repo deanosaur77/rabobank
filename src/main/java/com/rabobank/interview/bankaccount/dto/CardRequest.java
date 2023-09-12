@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "accountNumber",
     "amount"
 })
-public class Response {
+public class CardRequest {
 
     @JsonProperty("accountNumber")
     private String accountNumber;
@@ -57,7 +57,7 @@ public class Response {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(Response.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append(CardRequest.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("accountNumber");
         sb.append('=');
         sb.append(((this.accountNumber == null)?"<null>":this.accountNumber));
@@ -92,10 +92,10 @@ public class Response {
         if (other == this) {
             return true;
         }
-        if ((other instanceof Response) == false) {
+        if ((other instanceof CardRequest) == false) {
             return false;
         }
-        Response rhs = ((Response) other);
+        CardRequest rhs = ((CardRequest) other);
         return ((((this.amount == rhs.amount)||((this.amount!= null)&&this.amount.equals(rhs.amount)))&&((this.additionalProperties == rhs.additionalProperties)||((this.additionalProperties!= null)&&this.additionalProperties.equals(rhs.additionalProperties))))&&((this.accountNumber == rhs.accountNumber)||((this.accountNumber!= null)&&this.accountNumber.equals(rhs.accountNumber))));
     }
 

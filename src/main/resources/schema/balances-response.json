@@ -1,0 +1,11 @@
+{
+  		"items": {
+  			"properties": {
+   			"name": { "type": "string"},
+   			"surname": { "type": "string"},	
+			"accountNumber": { "type": "string"},
+			"accountType": { "type": "string" },
+			"balance": { "type": "number" }
+  		}	    
+	}
+}

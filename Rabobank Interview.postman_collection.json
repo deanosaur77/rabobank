@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "1fba9055-2d17-4bb5-bf9a-1a83d8a2e9af",
+		"name": "Rabobank Interview",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1556719"
+	},
+	"item": [
+		{
+			"name": "balances",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/account/balances",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"account",
+						"balances"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get transactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/account/transactions?accountNumber=50111",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"account",
+						"transactions"
+					],
+					"query": [
+						{
+							"key": "accountNumber",
+							"value": "50111"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DC Withdraw",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accountNumber\": \"50111\",\r\n    \"amount\": \"100.00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/debit-card/withdraw",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"debit-card",
+						"withdraw"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DC Deposit",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accountNumber\": \"60111\",\r\n    \"amount\": \"100.00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/debit-card/deposit",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"debit-card",
+						"deposit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CC Withdraw",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accountNumber\": \"50111\",\r\n    \"amount\": \"100.00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/credit-card/withdraw",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"credit-card",
+						"withdraw"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CC Deposit",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accountNumber\": \"50111\",\r\n    \"amount\": \"100.00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/credit-card/deposit",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"credit-card",
+						"deposit"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

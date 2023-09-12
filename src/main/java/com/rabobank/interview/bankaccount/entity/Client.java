@@ -28,6 +28,17 @@ public class Client implements Serializable {
 	@Column(nullable = false)
 	private String lastName;
 
+	@Column(nullable = false)
+	private String idNumber;
+
+	@OneToMany(mappedBy = "client")
+	private List<Account> accounts = new ArrayList<>();
+
+	
+	public Client() {
+		super();
+	}
+
 	public Client(String firstName, String lastName, String idNumber) {
 		super();
 		this.firstName = firstName;
@@ -35,12 +46,7 @@ public class Client implements Serializable {
 		this.idNumber = idNumber;
 	}
 
-	@Column(nullable = false)
-	private String idNumber;
-
-	@OneToMany(mappedBy = "client")
-	private List<Account> accounts = new ArrayList<>();
-
+	
 	public List<Account> getAccounts() {
 		return accounts;
 	}

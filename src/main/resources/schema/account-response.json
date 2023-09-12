@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "properties": {
+  	  "name": { "type": "string"},
+  	  "surname": { "type": "string"},	
+      "status": { "type": "string"},
+      "message": { "type": "string"},
+      "accountNumber": { "type": "string"},
+      "accountType": { "type": "string" },
+      "balance": { "type": "number" },
+      "transactionDetail": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": false,
+        "properties": {
+          "transactionType": { "type": "string"},
+          "amount": { "type": "number" },
+          "previousBalance": { "type": "number" },
+          "time" : {"type": "string"}
+        }
+      }
+      }    
+    }
+}

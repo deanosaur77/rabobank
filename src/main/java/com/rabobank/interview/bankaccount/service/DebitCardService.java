@@ -17,21 +17,17 @@ import com.rabobank.interview.bankaccount.mapper.ResponseMapper;
 import com.rabobank.interview.bankaccount.repository.AccountRepository;
 
 @Service
-public class CreditCardService extends CardService {
+public class DebitCardService extends CardService {
 
-	//Interest rate should be configurable per account and stored in DB
-	private static final int INTEREST_RATE = 1;
-	
 	@Autowired
 	private AccountRepository accountRepo;
 
 	@Override
 	public AccountResponse withdraw(String accountNumber, double amount) throws InsufficentBalanceException, AccountNotFoundException {
-		Account account = accountRepo.findByAccountNumberAndAccountType(accountNumber, AccountType.CREDIT_CARD).orElseThrow(AccountNotFoundException::new);
+		Account account = accountRepo.findByAccountNumberAndAccountType(accountNumber, AccountType.DEBIT_CARD).orElseThrow(AccountNotFoundException::new);
 
 		//A good idea is to introduce calculators per accountType
-		double interest = amount * INTEREST_RATE / 100;
-		double newBalance = account.getBalance() - (amount + interest);
+		double newBalance = account.getBalance() - amount;
 
 		if (newBalance < 0)
 			throw new InsufficentBalanceException();
@@ -49,7 +45,7 @@ public class CreditCardService extends CardService {
 
 	@Override
 	public AccountResponse deposit(String accountNumber, double amount) throws AccountNotFoundException {
-		return super.deposit(accountNumber, AccountType.CREDIT_CARD, amount);
+		return super.deposit(accountNumber, AccountType.DEBIT_CARD, amount);
 	}
 
 }
